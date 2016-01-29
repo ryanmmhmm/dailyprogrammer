@@ -69,3 +69,35 @@ class SelfDescriptiveNumber
   end
 
 end
+
+
+class InputRange
+
+  ## Assumes base 10 for input values
+
+  attr_reader :range, :high, :low
+
+  def initialize(range)
+    @range = range
+    @high = high
+    @low = low
+  end
+
+  def high
+    maximum_range = Array.new
+    @range.times do
+      maximum_range << 9
+    end
+    maximum_range.join.to_i
+  end
+
+  def low
+    minimum_range = 1 * 0.1
+    minimum_range = 0 if @range == 0
+    @range.times do
+      minimum_range = minimum_range * 10
+    end
+    minimum_range.to_i
+  end
+
+end

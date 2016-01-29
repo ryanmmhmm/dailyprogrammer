@@ -4,6 +4,7 @@ require '250_sdn.rb'
 class TestSDN < Minitest::Test
 
   def setup
+    @input_range = InputRange.new(3)
     @input = SelfDescriptiveNumber.new(120)
   end
 
@@ -25,6 +26,18 @@ class TestSDN < Minitest::Test
 
   def test_that_sdn_max_range_matches_input
     assert_equal(333, @input.max_range)
+  end
+
+  def test_that_input_range_exists
+    assert_equal(3, @input_range.range)
+  end
+
+  def test_that_input_range_high_is_equal
+    assert_equal(999, @input_range.high)
+  end
+
+  def test_that_input_range_low_is_equal
+    assert_equal(100, @input_range.low)
   end
 
 end
