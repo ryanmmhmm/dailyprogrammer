@@ -2,11 +2,12 @@ require 'pry'
 
 class SelfDescriptiveNumber
 
-  attr_reader :number, :individual_numbers
+  attr_reader :number, :individual_numbers, :sum
 
   def initialize(number)
     @number = number
     @individual_numbers = split_numbers_into_array
+    @sum = sum
   end
 
   def split_numbers_into_array
@@ -24,6 +25,15 @@ class SelfDescriptiveNumber
     @individual_numbers.map.each do |character|
       character = character.to_i
     end
+  end
+
+  def sum
+    total = 0
+    @individual_numbers.each do |x|
+      total = total + x
+    end
+
+    total
   end
 
 end

@@ -15,4 +15,8 @@ class TestSDN < Minitest::Test
     assert_equal([1, 2, 0], @input.individual_numbers)
   end
 
+  def test_that_sum_is_correct
+    assert_equal(3, @input.sum)
+  end
+
 end
