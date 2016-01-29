@@ -68,6 +68,15 @@ class SelfDescriptiveNumber
     end
   end
 
+  def self.is_sdn?
+    permutations = build_possible_permutations
+    if permutations.include?(@number)
+      @number
+    else
+      false
+    end
+  end
+
 end
 
 
@@ -98,6 +107,20 @@ class InputRange
       minimum_range = minimum_range * 10
     end
     minimum_range.to_i
+  end
+
+  def possible_numbers
+    possibilities = (@low..@high).to_a
+    possibilites.each do |possibility|
+      check_if_sdn(possibility)
+    end
+  end
+
+  def check_if_sdn(possibility)
+    @possibility = SelfDescriptiveNumber.new(possibility)
+    if (@possibility.min_range >= @low) && (@possibility.max_range <= @high)
+      puts @possibility.is_sdn? if != false
+    end
   end
 
 end
