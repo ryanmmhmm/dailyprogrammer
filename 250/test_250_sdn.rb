@@ -7,6 +7,7 @@ class TestSDN < Minitest::Test
     @input_range_3 = InputRange.new(3)
     @input_range_4 = InputRange.new(4)
     @input = SelfDescriptiveNumber.new(120)
+    @real_sdn = SelfDescriptiveNumber.new(1210)
   end
 
   def test_that_program_accepts_input
@@ -47,6 +48,10 @@ class TestSDN < Minitest::Test
 
   def test_that_input_range_high_is_correct
     assert_equal(9999, @input_range_4.high)
+  end
+
+  def test_that_an_sdn_is_computed_to_be_an_sdn
+    assert_equal(@real_sdn.number, @real_sdn.check_if_sdn)
   end
 
 end
