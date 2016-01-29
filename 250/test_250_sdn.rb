@@ -6,6 +6,8 @@ class TestSDN < Minitest::Test
   def setup
     @input_range_3 = InputRange.new(3)
     @input_range_4 = InputRange.new(4)
+    @input_range_5 = InputRange.new(5)
+
     @input = SelfDescriptiveNumber.new(120)
     @real_sdn = SelfDescriptiveNumber.new(1210)
   end
@@ -52,6 +54,10 @@ class TestSDN < Minitest::Test
 
   def test_that_an_sdn_is_computed_to_be_an_sdn
     assert_equal(@real_sdn.number, @real_sdn.check_if_sdn)
+  end
+
+  def test_that_a_NON_sdn_is_false
+    assert_equal(false, @input.check_if_sdn)
   end
 
 end
