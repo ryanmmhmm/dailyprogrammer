@@ -2,12 +2,13 @@ require 'pry'
 
 class SelfDescriptiveNumber
 
-  attr_reader :number, :individual_numbers, :sum
+  attr_reader :number, :individual_numbers, :sum, :min_range
 
   def initialize(number)
     @number = number
     @individual_numbers = split_numbers_into_array
     @sum = sum
+    @min_range = min_range
   end
 
   def split_numbers_into_array
@@ -34,6 +35,17 @@ class SelfDescriptiveNumber
     end
 
     total
+  end
+
+  def min_range
+    minimum = 0
+    minimum = 0.1 if @sum >= 1
+
+    @sum.times do
+      minimum = minimum * 10
+    end
+
+    minimum
   end
 
 end

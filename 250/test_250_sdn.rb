@@ -19,4 +19,8 @@ class TestSDN < Minitest::Test
     assert_equal(3, @input.sum)
   end
 
+  def test_that_sdn_min_range_matches_input
+    assert_equal(100, @input.min_range)
+  end
+
 end
