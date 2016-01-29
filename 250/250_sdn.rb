@@ -2,7 +2,7 @@ require 'pry'
 
 class SelfDescriptiveNumber
 
-  attr_reader :number, :individual_numbers, :sum, :min_range, :max_range
+  attr_reader :number, :individual_numbers, :sum, :min_range, :max_range, :build_possible_permutations
 
   def initialize(number)
     @number = number
@@ -68,7 +68,7 @@ class SelfDescriptiveNumber
     end
   end
 
-  def self.is_sdn?
+  def check_if_sdn
     permutations = build_possible_permutations
     if permutations.include?(@number)
       @number
@@ -84,7 +84,13 @@ class SelfDescriptiveNumber
         permutations << i
       end
     end
-    permutations.permutation.to_a
+    permutations = permutations.permutation.to_a
+
+    permutations.each_with_index do |set, i|
+      permutations[i] = set.join.to_i
+    end
+
+    permutations
   end
 
 end
@@ -121,15 +127,15 @@ class InputRange
 
   def possible_numbers
     possibilities = (@low..@high).to_a
-    possibilites.each do |possibility|
+    possibilities.each do |possibility|
       check_if_sdn(possibility)
     end
   end
 
-  def check_if_sdn(possibility)
-    @possibility = SelfDescriptiveNumber.new(possibility)
-    if (@possibility.min_range >= @low) && (@possibility.max_range <= @high)
-      puts @possibility.is_sdn? if != false
+  def check_possibility(possibility)
+    possibility = SelfDescriptiveNumber.new(possibility)
+    if (possibility.min_range >= @low) && (possibility.max_range <= @high)
+      puts possibility.is_sdn? if true
     end
   end
 
