@@ -4,7 +4,8 @@ require '250_sdn.rb'
 class TestSDN < Minitest::Test
 
   def setup
-    @input_range = InputRange.new(3)
+    @input_range_3 = InputRange.new(3)
+    @input_range_4 = InputRange.new(4)
     @input = SelfDescriptiveNumber.new(120)
   end
 
@@ -29,15 +30,23 @@ class TestSDN < Minitest::Test
   end
 
   def test_that_input_range_exists
-    assert_equal(3, @input_range.range)
+    assert_equal(3, @input_range_3.range)
   end
 
   def test_that_input_range_high_is_equal
-    assert_equal(999, @input_range.high)
+    assert_equal(999, @input_range_3.high)
   end
 
   def test_that_input_range_low_is_equal
-    assert_equal(100, @input_range.low)
+    assert_equal(100, @input_range_3.low)
+  end
+
+  def test_that_input_range_low_is_correct
+    assert_equal(1000, @input_range_4.low)
+  end
+
+  def test_that_input_range_high_is_correct
+    assert_equal(9999, @input_range_4.high)
   end
 
 end
