@@ -77,6 +77,16 @@ class SelfDescriptiveNumber
     end
   end
 
+  def build_possible_permutations
+    permutations = Array.new
+    @individual_numbers.each_with_index do |number, i|
+      number.times do
+        permutations << i
+      end
+    end
+    permutations.permutation.to_a
+  end
+
 end
 
 
