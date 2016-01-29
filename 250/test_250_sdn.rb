@@ -23,4 +23,8 @@ class TestSDN < Minitest::Test
     assert_equal(100, @input.min_range)
   end
 
+  def test_that_sdn_max_range_matches_input
+    assert_equal(333, @input.max_range)
+  end
+
 end
