@@ -1,3 +1,4 @@
+require 'pry'
 
 class SelfDescriptiveNumber
 
@@ -15,7 +16,14 @@ class SelfDescriptiveNumber
       @individual_numbers = @number
     end
 
-    @individual_numbers.split('')
+    @individual_numbers = @individual_numbers.split('')
+    individual_numbers_to_integers
+  end
+
+  def individual_numbers_to_integers
+    @individual_numbers.map.each do |character|
+      character = character.to_i
+    end
   end
 
 end

@@ -12,7 +12,7 @@ class TestSDN < Minitest::Test
   end
 
   def test_that_number_split_into_array_of_numbers
-    assert_equal(["1", "2", "0"], @input.individual_numbers)
+    assert_equal([1, 2, 0], @input.individual_numbers)
   end
 
 end
