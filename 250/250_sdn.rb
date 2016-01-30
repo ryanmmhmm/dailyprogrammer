@@ -100,12 +100,15 @@ class InputRange
 
   ## Assumes base 10 for input values
 
-  attr_reader :range, :high, :low
+  attr_reader :range, :high, :low, :output
 
   def initialize(range)
     @range = range
     @high = high
     @low = low
+    @output = nil
+
+    possible_numbers
   end
 
   def high
@@ -128,15 +131,22 @@ class InputRange
   def possible_numbers
     possibilities = (@low..@high).to_a
     possibilities.each do |possibility|
-      check_if_sdn(possibility)
+      check_possibility(possibility)
     end
   end
 
   def check_possibility(possibility)
     possibility = SelfDescriptiveNumber.new(possibility)
     if (possibility.min_range >= @low) && (possibility.max_range <= @high)
-      puts possibility.is_sdn? if true
+      if possibility.check_if_sdn.is_a?(Integer)
+        append_output(possibility.number)
+      end
     end
+  end
+
+  def append_output(found_sdn)
+    @output ||= Array.new
+    @output << found_sdn
   end
 
 end
