@@ -133,6 +133,7 @@ class InputRange
     possibilities.each do |possibility|
       check_possibility(possibility)
     end
+    @output = "There are no solutions." if @output == nil
   end
 
   def check_possibility(possibility)
